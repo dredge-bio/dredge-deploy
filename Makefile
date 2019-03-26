@@ -1,6 +1,6 @@
 
 DREDGE_WWW          ?= /run/user/1001/gvfs/smb-share:server=web.bio.unc.edu,share=dredge
-DREDGE_REPOSITORY   ?= /home/ptgolden/Code/projects/sophie-next
+DREDGE_REPOSITORY   ?= /home/ptgolden/Code/projects/dredge
 DREDGE_SHARED_DATA  ?= /home/ptgolden/Dropbox/dredge
 
 DREDGE_VERSION      := dredge-$(subst v,,$(shell git --git-dir $(DREDGE_REPOSITORY)/.git describe --tags))

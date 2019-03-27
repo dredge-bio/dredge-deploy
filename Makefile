@@ -60,7 +60,7 @@ $(DREDGE_ZIP):
 $(DREDGE_CODE): $(DREDGE_ZIP)
 	unzip -d staging $<
 	touch $@
-	sed -i -e "s|// window.DREDGE.*|window.DREDGE_PROJECT_CONFIG_URL = 'project.json'|" \
+	sed -i -e "s|window.DREDGE.*|window.DREDGE_PROJECT_CONFIG_URL = 'project.json'|" \
 		$@/index.html
 
 $(PROJECTS): $(DREDGE_SHARED_DATA)/project_%: $(DREDGE_CODE)

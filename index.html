@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>DrEdGE: Differential Expression Gene Explorer</title>
+  <style type="text/css">
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  height: 100%;
+}
+
+.wrapper {
+  margin: auto;
+  max-width: 720px;
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: auto 1fr auto
+}
+
+footer {
+  text-align: center;
+  align-self: center;
+  height: 2em;
+}
+
+h1 { margin: 1rem 0 }
+
+p, ul {
+  line-height: 1.33em;
+  margin-bottom: 1.33rem
+}
+
+p + ul {
+  margin-top: -1em;
+}
+
+.screenshot {
+  text-align: center;
+  margin: 3em 0;
+}
+.screenshot img {
+  border: 2px solid blue;
+}
+  </style>
+</head>
+
+<body>
+
+<div class="wrapper">
+<header>
+  <h1>DrEdGE: Differential Expression Gene Explorer</h1>
+</header>
+
+<main>
+  <p>
+  <strong>DrEdGE</strong> is a Web-based tool to visualize RNAseq data. It was developed by <a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#x73;&#x6f;&#112;&#104;&#x69;&#x61;&#46;&#116;&#x69;&#110;&#116;&#x6f;&#114;&#x69;&#64;&#x67;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#x6f;&#x6d;" class="email">&#x53;&#x6f;&#112;&#104;&#x69;&#x61;&#32;&#84;&#x69;&#110;&#116;&#x6f;&#114;&#x69;</a> and <a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#112;&#116;&#x67;&#x6f;&#108;&#100;&#x65;&#110;&#48;&#64;&#x67;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#x6f;&#x6d;" class="email">&#80;&#x61;&#116;&#114;&#x69;&#x63;&#x6b;&#32;&#x47;&#x6f;&#108;&#100;&#x65;&#110;</a>. The code was written by Patrick Golden from 2015-2019. All source code is available on <a href="https://github.com/ptgolden/dredge">GitHub</a> under the <a href="https://www.gnu.org/licenses/agpl.txt">AGPL</a> license.
+  </p>
+
+  <p class="screenshot">
+  <a href="dredge.png">
+    <img title="DrEdGE screenshot. Click to enlarge" src="dredge-thumb.png" />
+  </a>
+  </p>
+
+  <p>
+  Initial development of the project resulted in visualizations of three different RNAseq datasets:
+  </p>
+
+  <ul>
+    <li><a href="c-elegans-timecourse">Timecourse of <i>C. elegans</i> gastrulation</a></li>
+    <li><a href="human-neuronal-tissue">Human neuronal tissue</a></li>
+    <li><a href="mouse-embryonic-tissue">Mouse embryonic tissue</a></li>
+  </ul>
+
+  <p>If you have your own dataset which you would like to visualization with DrEdGE, follow the instructions <a href="blank?page=configure">here</a>.</p>
+
+  <p>If you have deployed DrEdGE on your own, please email Sophia or Patrick to list your DrEdGE deployment on this site.</p>
+</main>
+
+<footer>
+  <i>Website last updated %%UPDATED%%</i>
+</footer>
+
+</div>
+
+</body>
+</html>

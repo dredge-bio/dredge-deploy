@@ -16,7 +16,7 @@ ifndef UPLOAD_PAIRWISE_FILES
 	PROJECT_RSYNC_FLAGS += --exclude pairwise_*
 endif
 
-.PHONY: all clean help $(PROJECTS)
+.PHONY: all clean help homepage $(PROJECTS)
 
 help:
 	@echo
@@ -49,7 +49,7 @@ help:
 	@echo "  To change, this setting, set the environment variable UPLOAD_PAIRWISE_FILES"
 	@echo
 
-upload: $(PROJECTS)
+upload: $(PROJECTS) homepage
 
 clean:
 	rm -rf staging
@@ -62,6 +62,13 @@ $(DREDGE_CODE): $(DREDGE_ZIP)
 	touch $@
 	sed -i -e "s|window.DREDGE.*|window.DREDGE_PROJECT_CONFIG_URL = 'project.json'|" \
 		$@/index.html
+
+homepage: index.html $(DREDGE_CODE)
+	cp $< $<.tmp
+	sed -i -e 's/%%UPDATED%%/$(shell date +'%B %Y')/' $<.tmp
+	rsync $(RSYNC_FLAGS) $<.tmp $(DREDGE_WWW)/$<
+	rsync $(RSYNC_FLAGS) dredge*.png $(DREDGE_WWW)/
+	rsync $(RSYNC_FLAGS) $(DREDGE_CODE)/ $(DREDGE_WWW)/blank
 
 $(PROJECTS): $(DREDGE_SHARED_DATA)/project_%: $(DREDGE_CODE)
 	rsync $(RSYNC_FLAGS) $(PROJECT_RSYNC_FLAGS) $@/ $(DREDGE_WWW)/$*

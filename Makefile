@@ -67,9 +67,12 @@ homepage: index.html $(DREDGE_CODE)
 	cp $< $<.tmp
 	sed -i -e 's/%%UPDATED%%/$(shell date +'%B %Y')/' $<.tmp
 	rsync $(RSYNC_FLAGS) $<.tmp $(DREDGE_WWW)/$<
+	rm -f $<.tmp
 	rsync $(RSYNC_FLAGS) dredge*.png $(DREDGE_WWW)/
 	rsync $(RSYNC_FLAGS) $(DREDGE_CODE)/ $(DREDGE_WWW)/blank
+	rsync $(RSYNC_FLAGS) $(DREDGE_ZIP) $(DREDGE_WWW)/blank
 
 $(PROJECTS): $(DREDGE_SHARED_DATA)/project_%: $(DREDGE_CODE)
 	rsync $(RSYNC_FLAGS) $(PROJECT_RSYNC_FLAGS) $@/ $(DREDGE_WWW)/$*
 	rsync $(RSYNC_FLAGS) $</ $(DREDGE_WWW)/$*
+	rsync $(RSYNC_FLAGS) $(DREDGE_ZIP) $(DREDGE_WWW)/$*

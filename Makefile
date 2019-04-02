@@ -13,7 +13,7 @@ RSYNC_FLAGS         := -rtv --progress
 PROJECT_RSYNC_FLAGS := --delete --exclude extra
 
 ifndef UPLOAD_PAIRWISE_FILES
-	PROJECT_RSYNC_FLAGS += --exclude pairwise_*
+	PROJECT_RSYNC_FLAGS += --exclude *pairwise*
 endif
 
 .PHONY: all clean help homepage $(PROJECTS)

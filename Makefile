@@ -60,17 +60,15 @@ $(DREDGE_ZIP):
 $(DREDGE_CODE): $(DREDGE_ZIP)
 	unzip -d staging $<
 	touch $@
-	sed -i -e "s|window.DREDGE.*|window.DREDGE_PROJECT_CONFIG_URL = 'project.json'|" \
-		$@/index.html
 
-homepage: index.html $(DREDGE_CODE)
+homepage: index.html $(DREDGE_ZIP)
 	cp $< $<.tmp
 	sed -i -e 's/%%UPDATED%%/$(shell date +'%B %Y')/' $<.tmp
+	sed -i -e 's/%%VERSION%%/$(DREDGE_VERSION)/g' $<.tmp
 	rsync $(RSYNC_FLAGS) $<.tmp $(DREDGE_WWW)/$<
 	rm -f $<.tmp
 	rsync $(RSYNC_FLAGS) dredge*.png $(DREDGE_WWW)/
-	rsync $(RSYNC_FLAGS) $(DREDGE_CODE)/ $(DREDGE_WWW)/blank
-	rsync $(RSYNC_FLAGS) $(DREDGE_ZIP) $(DREDGE_WWW)/blank
+	rsync $(RSYNC_FLAGS) $(DREDGE_ZIP) $(DREDGE_WWW)
 
 $(PROJECTS): $(DREDGE_SHARED_DATA)/project_%: $(DREDGE_CODE)
 	rsync $(RSYNC_FLAGS) $(PROJECT_RSYNC_FLAGS) $@/ $(DREDGE_WWW)/$*
